@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Affichage des coordonnées GPS</title>
+  <title>Carte</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Coordonnées GPS</h1>
-  <p id="latitude">Latitude: </p>
-  <p id="longitude">Longitude: </p>
+  <div id="map"></div>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js%22%3E</script>
   <script>
-    // Fonction pour récupérer les paramètres de l'URL
-    function getURLParameter(name) {
-      var urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-    }
+    var map = L.map('map').setView([40.7128, -74.0060], 13); // Coordonnées de départ et niveau de zoom
 
-    // Récupération des coordonnées de l'URL
-    var latitude = getURLParameter("latitude");
-    var longitude = getURLParameter("longitude");
+    L.tileLayer('https://%7Bs%7D.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png', {
+      attribution: 'Carte',
+      maxZoom: 18,
+      tileSize: 512,
+      zoomOffset: -1
+    }).addTo(map);
 
-    // Affichage des coordonnées dans les paragraphes correspondants
-    document.getElementById("latitude").textContent += latitude;
-    document.getElementById("longitude").textContent += longitude;
+    var marker = L.marker([40.7128, -74.0060]).addTo(map); // Coordonnées du marqueur
   </script>
 </body>
 </html>
