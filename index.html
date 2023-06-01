@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Affichage des coordonnées GPS</title>
+</head>
+<body>
+  <h1>Coordonnées GPS</h1>
+  <p id="latitude">Latitude: </p>
+  <p id="longitude">Longitude: </p>
+
+  <script>
+    // Fonction pour récupérer les paramètres de l'URL
+    function getURLParameter(name) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Récupération des coordonnées de l'URL
+    var latitude = getURLParameter("latitude");
+    var longitude = getURLParameter("longitude");
+
+    // Affichage des coordonnées dans les paragraphes correspondants
+    document.getElementById("latitude").textContent += latitude;
+    document.getElementById("longitude").textContent += longitude;
+  </script>
+</body>
+</html>
